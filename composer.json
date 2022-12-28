@@ -1,0 +1,113 @@
+{
+    "name": "nitsan/ns-t3dev",
+    "type": "typo3-cms-extension",
+    "description": "Master piece of all extensions for the references",
+    "authors": [
+        {
+            "name": "Nilesh Malankiya",
+            "role": "Developer"
+        }
+    ],
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "nitsan/ns-basetheme": "^11.5",
+        "typo3/cms-core": "^11.5",
+        "typo3/cms-beuser": "^11.5",
+        "typo3/cms-core": "^11.5",
+        "typo3/cms-extbase": "^11.5",
+        "typo3/cms-extensionmanager": "^11.5",
+        "typo3/cms-fluid": "^11.5",
+        "typo3/cms-fluid-styled-content": "^11.5",
+        "typo3/cms-filelist": "^11.5",
+        "typo3/cms-fluid": "^11.5",
+        "typo3/cms-fluid-styled-content": "^11.5",
+        "typo3/cms-form": "^11.5",
+        "typo3/cms-frontend": "^11.5",
+        "typo3/cms-impexp": "^11.5",
+        "typo3/cms-info": "^11.5",
+        "typo3/cms-install": "^11.5",
+        "typo3/cms-lowlevel": "^11.5",
+        "typo3/cms-recordlist": "^11.5",
+        "typo3/cms-rte-ckeditor": "^11.5",
+        "typo3/cms-scheduler": "^11",
+        "typo3/cms-seo": "^11.5",
+        "typo3/cms-setup": "^11.5",
+        "typo3/cms-sys-note": "^11.5",
+        "typo3/cms-t3editor": "^11.5",
+        "typo3/cms-tstemplate": "^11.5",
+        "typo3/cms-viewpage": "^11.5"
+    },
+    "require-dev": {
+        "doctrine/dbal": "^2.13.8 || ^3.3.7",
+        "ergebnis/composer-normalize": "^2.28.3",
+        "friendsofphp/php-cs-fixer": "^3.13.0",
+        "helmich/typo3-typoscript-lint": "^3.0.0",
+        "php-coveralls/php-coveralls": "^2.5.3",
+        "phpstan/extension-installer": "^1.2.0",
+        "phpstan/phpstan": "^1.9.2",
+        "phpstan/phpstan-phpunit": "^1.3.0",
+        "phpstan/phpstan-strict-rules": "^1.4.4",
+        "phpunit/phpunit": "^9.5.26",
+        "saschaegerer/phpstan-typo3": "^1.8.2",
+        "seld/jsonlint": "^1.9.0",
+        "squizlabs/php_codesniffer": "^3.7.1",
+        "symfony/yaml": "^5.4 || ^6.1",
+        "typo3/cms-fluid-styled-content": "^11.5.4 || ^12.0",
+        "typo3/coding-standards": "^0.5.5",
+        "typo3/testing-framework": "^7.0@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "NITSAN\\NsT3dev\\": "Classes"
+        }
+    },
+    "replace": {
+        "typo3-ter/ns-t3dev": "self.version"
+    },
+    "config": {
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin",
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "phpstan/extension-installer": true,
+            "sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": true,
+            "typo3/class-alias-loader": true,
+            "typo3/cms-composer-installers": true
+        },
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "ns:php": [
+            "@ns:php:copypaste",
+            "@ns:php:cs-fixer",
+            "@ns:php:lint",
+            "@ns:php:sniff",
+            "@ns:php:stan"
+        ],
+        "ns:php:copypaste": "@php ./tools/phpcpd Classes",
+        "ns:php:cs-fixer": "php-cs-fixer fix --config .php-cs-fixer.php -v --dry-run --using-cache no --diff",
+        "ns:php:lint": "find .*.php *.php Classes Configuration Tests -name '*.php' -print0 | xargs -r -0 -n 1 -P 4 php -l",
+        "ns:php:sniff": "phpcs Classes Configuration Tests",
+        "ns:php:stan": "phpstan --no-progress",
+        "ns:yaml:lint": "find . ! -path '*.Build/*' ! -path '*node_modules/*' -regextype egrep -regex '.*.ya?ml$' | xargs -r php ./.Build/vendor/bin/yaml-lint",
+        "ns:ts:lint": "typoscript-lint -c Configuration/TsLint.yml --ansi -n --fail-on-warnings -vvv Configuration/TypoScript",
+        "docs:generate": [
+            "docker run --rm t3docs/render-documentation show-shell-commands > tempfile.sh; echo 'dockrun_t3rd makehtml' >> tempfile.sh; bash tempfile.sh; rm tempfile.sh"
+        ],
+        "fix:php": [
+            "@fix:php:cs",
+            "@fix:php:sniff"
+        ],
+        "fix:php:cs": "php-cs-fixer fix --config .php-cs-fixer.php",
+        "fix:php:sniff": "phpcbf Classes Configuration Tests"
+    },
+    "extra": {
+        "typo3/cms": {
+            "web-dir": ".Build/public",
+            "extension-key": "ns_t3dev"
+        }
+    }
+}
