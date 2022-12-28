@@ -14,6 +14,10 @@ database:
 nfs_mount_enabled: false
 mutagen_enabled: false
 hooks:
+  post-pull:
+  - exec: rm -Rf ./.ddev/typo3-demo-data/dump
+  pre-pull:
+  - exec: unzip ./.ddev/typo3-demo-data/demo-data.zip -d ./.ddev/typo3-demo-data/
   post-start:
   - exec: composer install --no-progress
   - exec-host: ddev pull dump
