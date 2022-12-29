@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace NITSAN\NsT3dev\Domain\Model;
 
-
+use TYPO3\CMS\Extbase\Annotation\Validate;
+use NITSAN\NsT3dev\Domain\Validator\DescriptionValidator;
 /**
  * This file is part of the "T3 Dev" Extension for TYPO3 CMS.
  *
@@ -24,6 +25,7 @@ class ProductArea extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * name
      *
      * @var string
+     * @Validate("NotEmpty")
      */
     protected $name = null;
 
@@ -39,6 +41,7 @@ class ProductArea extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * description
      *
      * @var string
+     * @Validate("NITSAN\NsT3dev\Domain\Validator\DescriptionValidator")
      */
     protected $description = null;
 
