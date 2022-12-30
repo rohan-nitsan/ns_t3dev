@@ -35,7 +35,7 @@ if (TYPO3_MODE === 'BE') {
         'migration', // Submodule key
         '', // Position
         [
-            \NITSAN\NsT3dev\Controller\ProductAreaController::class => 'dashboard, executeMigration, specificGridMigrate, processMirgrate',
+            \NITSAN\NsT3dev\Controller\MigrationController::class => 'dashboard, executeMigration, specificGridMigrate, processMirgrate',
         ],
         [
             'access' => 'user,group',
