@@ -7,7 +7,6 @@
     </f:if>
     <div class="container">
         <f:link.action action="new">New ProductArea</f:link.action>
-
         <h1>Listing for ProductArea</h1>
         <f:flashMessages />
         <div class="d-flex justify-content-center">
@@ -21,7 +20,7 @@
                     <div class="row g-0">
                         <div class="col-md-4">
                             <f:if condition="{product.image}">
-                                <f:image image="{product.image}" class="img-fluid rounded-start" alt="image" /> 
+                                <f:image image="{product.image.0}" class="img-fluid rounded-start" alt="image" /> 
                             </f:if>
                         </div>
                         <div class="col-md-8">
@@ -30,6 +29,9 @@
                                 <p class="card-text">
                                     <f:format.html>{product.description -> f:format.crop(maxCharacters: 100)}</f:format.html>
                                 </p>
+                                <f:if condition="{settings.detailPageId}">
+                                    <f:link.action action="show" pageUid="{settings.detailPageId}" arguments="{productArea:product}">Details</f:link.action>
+                                </f:if>
                             </div>
                         </div>
                     </div>

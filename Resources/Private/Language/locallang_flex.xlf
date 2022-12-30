@@ -21,6 +21,12 @@
 			<trans-unit id="listing.paginationType_numbered" resname="listing.paginationType_numbered">
 				<source>Numbered Pagination</source>
 			</trans-unit>
+			<trans-unit id="details.sheet_title" resname="details.sheet_title">
+				<source>Product details</source>
+			</trans-unit>
+			<trans-unit id="details.listPageId" resname="details.listPageId">
+				<source>Product List PageId</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

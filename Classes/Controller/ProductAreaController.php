@@ -37,6 +37,7 @@ class ProductAreaController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
         $this->productAreaRepository = $productAreaRepository;
     }
 
+
     /**
      * action list
      *
@@ -82,6 +83,7 @@ class ProductAreaController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      */
     public function newAction(): \Psr\Http\Message\ResponseInterface
     {
+        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this, __FILE__.' Line'.__LINE__);die;
         return $this->htmlResponse();
     }
 
@@ -133,4 +135,15 @@ class ProductAreaController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
         $this->productAreaRepository->remove($productArea);
         $this->redirect('list');
     }
+
+    /**
+     * action validation
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function validationAction(): \Psr\Http\Message\ResponseInterface
+    {
+        return $this->htmlResponse();
+    }
+
 }
