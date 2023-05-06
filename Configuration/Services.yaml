@@ -1,0 +1,8 @@
+services:
+
+  NITSAN\NsT3dev\EventListener\ConnectionMigrator:
+    tags:
+      - name: event.listener
+        identifier: 'table-connection'
+        method: 'schemaEvent'
+        event: TYPO3\CMS\Core\Database\Event\AlterTableDefinitionStatementsEvent

@@ -55,3 +55,22 @@ defined('TYPO3') || die();
        }'
     );
 })();
+
+//----------------------------------------------------------------------------------------------------------------------
+// Database compare hide own tables
+//----------------------------------------------------------------------------------------------------------------------
+    // override connection migrator
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Core\\Database\\Schema\\ConnectionMigrator'] = [
+        'className' => 'NITSAN\\NsT3dev\\Database\\Schema\\ConnectionMigrator'
+    ];
+//----------------------------------------------------------------------------------------------------------------------
+    // Ignore tables with prefixes 
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['DATABASE_COMPARE']['IGNORE_TABLE_PREFIXES'] = [
+        'your_table_prefix',
+    ];
+
+    // Ignore individual table 
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['DATABASE_COMPARE']['IGNORE_TABLE_NAMES'] = [
+        'your_table_name',
+    ];
+//---------------------------------------------------------------------------------------------------------------------- 
