@@ -22,7 +22,7 @@ Vendor\YourExtension\EventListener\ConnectionMigrator:
 
 Step 2: Create a file for the Event Listener
 
-[`Classes/EventListener/ConnectionMigrator.php`](./Classes/EventListener/ConnectionMigrator.php)
+[`Classes/EventListener/ConnectionMigrator.php`](../Classes/EventListener/ConnectionMigrator.php)
 
 Store your table prefix in `$tablePrefix` variable. 
 
