@@ -9,7 +9,7 @@ In this way, we ignore the custom tables using **AlterTableDefinitionStatementsE
 
 Step 1: Register Event in **Services.yaml**
 
-[`Configuration/Services.yaml`](Configuration/Services.yaml)
+[`Configuration/Services.yaml`](../Configuration/Services.yaml)
 
 ```
 Vendor\YourExtension\EventListener\ConnectionMigrator:
@@ -22,12 +22,12 @@ Vendor\YourExtension\EventListener\ConnectionMigrator:
 
 Step 2: Create a file for the Event Listener
 
-[`Classes/EventListener/ConnectionMigrator.php`](Classes/EventListener/ConnectionMigrator.php)
+[`Classes/EventListener/ConnectionMigrator.php`](./Classes/EventListener/ConnectionMigrator.php)
 
 Store your table prefix in `$tablePrefix` variable. 
 
 
-If you want to ignore some specific tables, then you can register your tables in `$tables` array and ignore or remove line no. **23** to **28** in [`Classes/EventListener/ConnectionMigrator.php`](Classes/EventListener/ConnectionMigrator.php).
+If you want to ignore some specific tables, then you can register your tables in `$tables` array and ignore or remove line no. **23** to **28** in [`Classes/EventListener/ConnectionMigrator.php`](../Classes/EventListener/ConnectionMigrator.php).
 
 ## 2nd way ##
 
@@ -35,7 +35,7 @@ In this way, we ignore the custom tables using **System Objects**.
 
 Step 1: Register System Object  in **ext_localconf.php**.
 
-[`ext_localconf.php`](ext_localconf.php)
+[`ext_localconf.php`](../ext_localconf.php)
 
 ```
 //----------------------------------------------------------------------------------------------------------------------
@@ -60,6 +60,6 @@ Step 1: Register System Object  in **ext_localconf.php**.
 
 Step 2: Create a file for the **ConnectionMigrator.php**
 
-[`Classes/Database/Schema/ConnectionMigrator`](Classes/Database/Schema/ConnectionMigrator.php)
+[`Classes/Database/Schema/ConnectionMigrator`](../Classes/Database/Schema/ConnectionMigrator.php)
 
 
